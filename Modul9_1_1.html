@@ -1,0 +1,57 @@
+html
+ <form>
+  Select Currency:
+  <select>
+    <option value="EUR">EUR</option>
+    <option value="USD">USD</option>
+    <option value="GBP">GBP</option>
+  </select>
+  <br>
+  Enter Amount: <input type="number" name="amount" />
+  <br>
+  <input type="button" value="Recalculate" onclick="calculateCost()" />
+</form>
+
+<script>
+  function calculateCost() {
+    // get the currency and amount from the form
+    let selectedCurrency = document.querySelector('select').value;
+    let amount = document.querySelector('input[name="amount"]').value;
+    
+    // perform calculations here
+    let costInPLN = 0;
+    switch (selectedCurrency) {
+      case "EUR":
+        costInPLN = amount * 4.25;
+        break;
+      case "USD":
+        costInPLN = amount * 3.78;
+        break;
+      case "GBP":
+        costInPLN = amount * 4.75;
+        break;
+    }
+    
+    // output the result
+    alert("The cost in PLN is " + costInPLN);
+  }
+</script>
+python
+def calculate_cost(selected_currency, amount):
+    # perform calculations here
+    cost_in_pln = 0
+    if selected_currency == 'EUR':
+        cost_in_pln = amount * 4.25
+    elif selected_currency == 'USD':
+        cost_in_pln = amount * 3.78
+    elif selected_currency == 'GBP':
+        cost_in_pln = amount * 4.75
+    
+    return cost_in_pln
+
+selected_currency = input("Select Currency: ")
+amount = float(input("Enter Amount: "))
+
+cost_in_pln = calculate_cost(selected_currency, amount)
+
+print("The cost in PLN is " + str(cost_in_pln))
